@@ -1,5 +1,6 @@
 package com.example.firstservice;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +19,10 @@ import java.util.Enumeration;
 @RestController
 @RequestMapping("/first-service")
 @Slf4j
+@RequiredArgsConstructor
 public class FirstServiceController {
+
+    private final Environment env;
 
     @GetMapping("/welcome")
     public String welcome() {
@@ -32,8 +36,9 @@ public class FirstServiceController {
     }
 
     @GetMapping("/check")
-    public String check() {
-        return "first check";
+    public String check(HttpServletRequest request) {
+        log.info("Sever port={}", request.getServerPort());
+        return String.format("first check First Service on PORT %s", env.getProperty("local.server.port"));
     }
 
 }
