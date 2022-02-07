@@ -7,6 +7,7 @@ import com.sisipapa.userservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -40,19 +41,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByUserId(String userId) {
-        return null;
 
-//        UserEntity userEntity = userRepository.findByUserId(userId);
-//        if(userEntity == null){
-////            throw new UsenameNotFoundException("User not found");
-//        }
-//
-//        UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
-//
-//        List<ResponseOrder> orderList = new ArrayList<>();
-////        userDto.setOrders(orderList);
-//
-//        return userDto;
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if(userEntity == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
+
+        List<ResponseOrder> orderList = new ArrayList<>();
+        userDto.setOrders(orderList);
+
+        return userDto;
     }
 
     @Override
