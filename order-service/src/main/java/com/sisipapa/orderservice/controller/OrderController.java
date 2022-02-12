@@ -8,7 +8,6 @@ import com.sisipapa.orderservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +49,9 @@ public class OrderController {
         Iterable<OrderEntity> orderList = orderService.getOrdersByUserId(userId);
 
         List<ResponseOrder> result = new ArrayList<>();
+        orderList.forEach(userEntity -> {
+            result.add(new ModelMapper().map(userEntity, ResponseOrder.class));
+        });
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
