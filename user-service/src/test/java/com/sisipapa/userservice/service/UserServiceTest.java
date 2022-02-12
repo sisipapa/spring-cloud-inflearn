@@ -46,6 +46,7 @@ class UserServiceTest {
         UserDto resultUserDto = userService.createUser(mockUserDto);
 
         // then
+        assertThat(resultUserDto).isNotNull();
         assertThat(mockUserDto.getEmail()).isEqualTo(resultUserDto.getEmail());
         assertThat(mockUserDto.getName()).isEqualTo(resultUserDto.getName());
 //        assertThat(resultUserDto.getUserId()).isNotNull();
