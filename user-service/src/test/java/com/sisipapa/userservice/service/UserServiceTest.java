@@ -55,6 +55,9 @@ class UserServiceTest {
 
     @Test
     void getUserByUserId() {
+        // given
+        // when
+        // then
     }
 
     @Test
