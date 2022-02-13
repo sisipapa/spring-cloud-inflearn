@@ -62,5 +62,8 @@ class UserServiceTest {
 
     @Test
     void getUserByAll() {
+        // given
+        // when
+        // then
     }
 }
