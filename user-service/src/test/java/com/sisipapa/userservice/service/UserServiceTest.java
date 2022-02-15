@@ -63,7 +63,7 @@ class UserServiceTest {
     @Test
     void getUserByAll() {
         // given
-        // when
+        // whenq
         // then
     }
 }
