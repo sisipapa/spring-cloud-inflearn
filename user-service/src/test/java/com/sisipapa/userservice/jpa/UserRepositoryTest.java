@@ -17,14 +17,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-//@DataJpaTest
-@ExtendWith(MockitoExtension.class)
+@DataJpaTest
+//@ExtendWith(MockitoExtension.class)
 class UserRepositoryTest {
 
     private String uuid = UUID.randomUUID().toString();
 
-    @Mock
-//    @Autowired
+//    @Mock
+    @Autowired
     private UserRepository userRepository;
 
     @BeforeEach
@@ -40,17 +40,17 @@ class UserRepositoryTest {
     @Test
     void findByUserId(){
         // given
-        UserEntity userEntity = new UserEntity();
-        userEntity.setName("테스트1");
-        userEntity.setEmail("test1@test.com");
-        userEntity.setEncryptedPwd("ecrtypt_pwd");
-        userEntity.setUserId(uuid);
-        when(userRepository.findByUserId(uuid)).thenReturn(userEntity);
+//        UserEntity userEntity = new UserEntity();
+//        userEntity.setName("테스트1");
+//        userEntity.setEmail("test1@test.com");
+//        userEntity.setEncryptedPwd("ecrtypt_pwd");
+//        userEntity.setUserId(uuid);
+//        when(userRepository.findByUserId(uuid)).thenReturn(userEntity);
         // when
         final UserEntity resultUserEntity = userRepository.findByUserId(uuid);
 
         // then
-        verify(userRepository, atLeastOnce()).findByUserId(uuid);
+//        verify(userRepository, atLeastOnce()).findByUserId(uuid);
         assertThat(resultUserEntity.getEmail()).isEqualTo("test1@test.com");
         assertThat(resultUserEntity.getName()).isEqualTo("테스트1");
     }
