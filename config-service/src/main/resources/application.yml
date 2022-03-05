@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:\gitworkspace\native-file-repo
+        git:
+          uri: https://github.com/sisipapa/spring-cloud-config.git
+#          username: {your username}
+#          password: {your password}
+#          uri: file:///C:\gitworkspace\git-local-repo
+
+
