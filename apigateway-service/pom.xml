@@ -61,6 +61,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!-- spring cloud config 종료 -->
+        <!-- Spring Cloud Bus Start -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+        <!-- Spring Cloud Bus End -->
     </dependencies>
     <dependencyManagement>
         <dependencies>
